@@ -1,4 +1,4 @@
-// This is a stripped of version of the Unity file `UnityPlayerActivity.java`.
+// This is a stripped-off version of the Unity file `UnityPlayerActivity.java`.
 // Original file is not included to prevent licensing issues.
 //
 // If you ever need a specific usage, you can copy the original file from
