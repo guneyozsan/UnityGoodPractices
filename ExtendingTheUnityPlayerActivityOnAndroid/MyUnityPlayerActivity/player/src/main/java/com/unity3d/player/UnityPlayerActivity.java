@@ -10,6 +10,8 @@ import android.app.Activity;
 
 public class UnityPlayerActivity extends Activity implements IUnityPlayerLifecycleEvents
 {
+    protected UnityPlayer mUnityPlayer; // don't change the name of this variable; referenced from native code
+
     // When Unity player unloaded move task to background
     @Override public void onUnityPlayerUnloaded() {
     }
