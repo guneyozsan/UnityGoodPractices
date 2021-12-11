@@ -23,7 +23,7 @@ This project allows you to extend `UnityPlayerActivity` in an isolated source-co
       + [Import plugin to Unity](#import-plugin-to-unity)
       + [Run on device](#run-on-device)
    * [Further improvements](#further-improvements)
-   
+
 ## Creating the project from scratch
 
 You can create this project from scratch following [the guide in my devblog](https://guneyozsan.github.io/extending-the-unity-player-activity-on-android/).
@@ -43,15 +43,15 @@ Open the folder `MyUnityPlayerActivity` in Android Studio.
 1. Rename the package name `com.mycompany.myunityproject.player` (e.g. `com.awesomegamestudio.veryfungame`) in the following files.
    1. Rename in `app/manifests/AndroidManifest.xml`.
    2. Rename in `app/java/com.mycompany.myunityproject.player/MyUnityPlayerActivity.java`.
-      1. In `MyUnityPlayerActivity.java`package name will be marked red. Hover on it (or `Right click/Show context actions`), and select `Move to package 'NEW_PACKAGE_NAME'`.
+      1. In `MyUnityPlayerActivity.java` package name will be marked red. Hover on it (or `Right click/Show context actions`), and select `Move to package 'NEW_PACKAGE_NAME'`.
 2. Rebuild the project from `Build/Recompile 'MyUnityPlayerActivity.java'`.
 3. Delete folder `app/java/com/mycompany`.
 
-#### Update local dependencies 
+#### Update local dependencies
 
 There are a couple of references to the local Unity installation. You need to update those Unity versions to match your Unity version installed locally.
 
-1. Find the following lines in `dependencies` sections of `build.gradle` files for both `app` and `player` modules.
+1. Find the following lines in the `dependencies` sections of `build.gradle` files for both `app` and `player` modules.
    ```js
    compileOnly files('C:/Program Files/Unity/Hub/Editor/UNITY_VERSION/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Release/Classes/classes.jar)
    ```
@@ -59,9 +59,9 @@ There are a couple of references to the local Unity installation. You need to up
 
 #### Update the mock UnityPlayerActivity file with the original (Optional)
 
-This project includes a stripped of version of the Unity file `UnityPlayerActivity.java`. This allows extending `MyUnityPlayerActivity` from `UnityPlayerActivity` class while keeping the reference `import com.unity3d.player.UnityPlayerActivity;` of `MyUnityPlayerActivity` intact. Original file is not included to prevent licensing issues.
+This project includes a stripped-off version of the Unity file `UnityPlayerActivity.java`. This allows extending `MyUnityPlayerActivity` from `UnityPlayerActivity` class while keeping the reference `import com.unity3d.player.UnityPlayerActivity;` of `MyUnityPlayerActivity` intact. The original file is not included to prevent licensing issues.
 
-If you ever need a specific usage, or use the most recent version of `UnityPlayerActivity.java`, you can replace the mock file with the original one by copying from `C:\Program Files\Unity\Hub\Editor\YOUR_UNITY_VERSION\Editor\Data\PlaybackEngines\AndroidPlayer\src\com\unity3d\player` to `/player/java/com/unity3d/player/`.
+If you ever need a specific usage or use the most recent version of `UnityPlayerActivity.java`, you can replace the mock file with the original one by copying from `C:\Program Files\Unity\Hub\Editor\YOUR_UNITY_VERSION\Editor\Data\PlaybackEngines\AndroidPlayer\src\com\unity3d\player` to `/player/java/com/unity3d/player/`.
 
 #### Export plugin from Android Studio
 
@@ -81,7 +81,7 @@ Open the folder `MyUnityProject` (or your own Unity project) in Unity.
 3. If you introduced any *non-compile-only* dependencies in `build.gradle (app)` of MyUnityPlayerActivity:
    1. Create a file `/Assets/MyUnityPlayerActivity/Editor/MyUnityPlayerActivityDependencies.xml`.
    2. Declare those dependencies in this file using the format below.
-      
+
       For example, if your `build.gradle (app)` looks like this:
 
       ```js
@@ -94,7 +94,7 @@ Open the folder `MyUnityProject` (or your own Unity project) in Unity.
           compileOnly project(':player')
       }
       ```
-      
+
       Then your `MyUnityPlayerActivityDependencies.xml` should look like this:
       ```xml
       <dependencies>
@@ -108,7 +108,7 @@ Open the folder `MyUnityProject` (or your own Unity project) in Unity.
 
 #### Run on device
 
-1. In Unity, make sure *Android* platform is selected in `Build Settings`.
+1. In Unity, make sure the *Android* platform is selected in `Build Settings`.
 2. Use `Build Settings/Build And Run` to run the application on a connected Android device.
 3. If you used build variant `debug` while building the plugin in Android Studio, you should see the demo log `Running MyUnityPlayerActivity.` from overridden `onCreate()` in `adb logcat` (e.g. by running `adb logcat -s Unity` in command prompt, or by using the *Android Logcat* package in Unity).
 
